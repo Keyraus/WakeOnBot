@@ -1,0 +1,20 @@
+{
+  "name": "bot-rp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "rp": "node index.js",
+    "test": "rp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.omedan.me:30181/omedan/bot-rp.git"
+  },
+  "author": "Omedan",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.0.2",
+    "util": "^0.12.2"
+  }
+}
