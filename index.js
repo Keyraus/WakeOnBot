@@ -1,10 +1,19 @@
 class OmedanRp {
 
     constructor() {
-
         // Déclaration de la configuration
 
         this.config = require("./config.json");
+
+        let SSH = require('simple-ssh');
+
+        this.global = {
+            ssh: new SSH({
+                host: this.config.server.host,
+                user: this.config.server.username,
+                pass: this.config.server.password
+            })
+        }
 
         // Déclaration des clients
 

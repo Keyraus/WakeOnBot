@@ -6,6 +6,7 @@ class Manager {
         this.config = opt.config;
         this.clients = opt.clients;
         this.discord = opt.discord;
+        this.global = opt.global
 
         this.commands = {};
     }
