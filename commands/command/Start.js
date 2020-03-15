@@ -12,7 +12,7 @@ class Start {
     getCommand() {
         return {
             Command: "start",
-            Aliases: ["boot", "launch", "play"],
+            // Aliases: ["boot", "launch", "play"],
             // Usage: "[<utilisateur>]",
             Description: "Démarre le serveur de Keyraus",
             Run: (args, message) => this.exec(args, message),
@@ -22,7 +22,7 @@ class Start {
 
     async exec() {
 	try {
-              const { stdout, stderr } = await exec('wakeonlan -i '+this.config.server.host+' '+this.config.server.MAC);
+              const { stdout, stderr } = await exec('wakeonlan -i '+this.config.server.host+' '+this.config.server.mac);
               console.log('stdout:', stdout);
               console.log('stderr:', stderr);
         }catch (err){
@@ -30,10 +30,7 @@ class Start {
         };
 
         this.clients.discord.getClient().channels.fetch(this.config.discord.channel.general).then(channel => {
-            let embed = this.discord.embed.embed();
-            embed.setTitle("Start")
-                 .setColor('#00FF00');
-            channel.send(embed);
+            channel.send("> Démarrage de la machine !");
         })
     }
 }
