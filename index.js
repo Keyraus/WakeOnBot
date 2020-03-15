@@ -5,7 +5,7 @@ class OmedanRp {
 
         this.config = require("./config.json");
 
-	let SSH = require('simple-ssh');
+	    let SSH = require('simple-ssh');
 
         this.global = {
             ssh: new SSH({
