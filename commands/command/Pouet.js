@@ -20,12 +20,9 @@ class Pouet {
     }
 
     async exec(args, message) {
-        let member = message.guild.members.resolve(message.author.id);
-        let isAdmin = member.roles.cache.some(r=>["admin", "Admin", "ADMIN"].includes(r.name));
-
 
         this.clients.discord.getClient().channels.fetch(this.config.discord.channel.general).then(channel => {
-            if(!isAdmin) {
+            if(!this.discord.members.checkPerm(message,"ADMIN")) {
                 channel.send("> **Vous n'avez pas les permissions !**");
                 return;
             }

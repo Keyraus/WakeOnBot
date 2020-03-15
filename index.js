@@ -5,7 +5,7 @@ class OmedanRp {
 
         this.config = require("./config.json");
 
-	    let SSH = require('simple-ssh');
+	let SSH = require('simple-ssh');
 
         this.global = {
             ssh: new SSH({
@@ -28,7 +28,8 @@ class OmedanRp {
         };
 
         this.discord = {
-            embed: new (require("./discord/Embed.js"))
+            embed: new (require("./discord/Embed.js")),
+	    members: new (require("./discord/Members.js"))
         }
 
         // Instanciation et initialisation des Managers
