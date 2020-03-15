@@ -1,7 +1,6 @@
 class OmedanRp {
 
     constructor() {
-
         // Déclaration de la configuration
 
         this.config = require("./config.json");
