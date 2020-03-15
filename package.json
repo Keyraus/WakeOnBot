@@ -1,17 +1,16 @@
 {
-  "name": "bot-rp",
+  "name": "WakeOnBot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "wob": "node index.js",
-    "test": "rp"
+    "wob": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.omedan.me:30181/omedan/bot-rp.git"
+    "url": "https://github.com/cececoul/WakeOnBot.git"
   },
-  "author": "Omedan",
+  "author": "Krixs & Keyraus",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.0.2",

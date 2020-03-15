@@ -32,7 +32,7 @@ class Start {
         this.clients.discord.getClient().channels.fetch(this.config.discord.channel.general).then(channel => {
             let embed = this.discord.embed.embed();
             embed.setTitle("Start")
-                 .setColor('#FF0000');
+                 .setColor('#00FF00');
             channel.send(embed);
         })
     }
