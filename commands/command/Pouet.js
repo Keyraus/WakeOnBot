@@ -22,7 +22,7 @@ class Pouet {
     async exec(args, message) {
 
         this.clients.discord.getClient().channels.fetch(this.config.discord.channel.general).then(channel => {
-            if(!this.discord.members.checkPerm(message,"ADMIN")) {
+            if(!this.discord.members.checkPerm(message,['ADMIN', 'fdp'])) {
                 channel.send("> **Vous n'avez pas les permissions !**");
                 return;
             }
