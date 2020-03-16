@@ -20,11 +20,11 @@ class Start {
         }
     }
 
-    async exec(message) {
+    async exec(args, message) {
 	this.clients.discord.getClient().channels.fetch(this.config.discord.channel.general).then(channel => {
 	    if(!this.discord.members.checkPerm(message,"ADMIN")) {
-                    channel.send("> **Vous n'avez pas les permissions !**");
-                    return;
+                channel.send("> **Vous n'avez pas les permissions !**");
+                return;
             }
 	    channel.send("> Démarrage de la machine !");
 	})
