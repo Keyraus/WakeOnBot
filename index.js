@@ -1,4 +1,4 @@
-class OmedanRp {
+class WakeOnBot {
 
     constructor() {
         // Déclaration de la configuration
@@ -65,4 +65,4 @@ class OmedanRp {
 
 }
 
-let Index = new OmedanRp();
+let Index = new WakeOnBot();

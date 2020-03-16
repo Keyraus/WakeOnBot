@@ -20,10 +20,16 @@ class Stop {
         }
     }
 
-    async exec() {
-        try {
+    async exec(message) {
+        if(!this.discord.members.checkPerm(message,"ADMIN")) {
+                channel.send("> **Vous n'avez pas les permissions !**");
+                return;
+        }
+
+	try {
             this.global.ssh.exec('shutdown now').start();
-        } catch (error) {
+        }
+	catch (error) {
             console.log(error)
             return;
         }

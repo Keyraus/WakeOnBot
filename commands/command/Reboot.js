@@ -20,8 +20,13 @@ class Reboot {
         }
     }
 
-    async exec() {
-        this.global.ssh.exec('reboot', {
+    async exec(message) {
+        if(!this.discord.members.checkPerm(message,"ADMIN")) {
+                channel.send("> **Vous n'avez pas les permissions !**");
+                return;
+        }
+
+	this.global.ssh.exec('reboot', {
             out: function(stdout) {
                 console.log(stdout);
             }

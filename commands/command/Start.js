@@ -20,7 +20,14 @@ class Start {
         }
     }
 
-    async exec() {
+    async exec(message) {
+	this.clients.discord.getClient().channels.fetch(this.config.discord.channel.general).then(channel => {
+	    if(!this.discord.members.checkPerm(message,"ADMIN")) {
+                    channel.send("> **Vous n'avez pas les permissions !**");
+                    return;
+            }
+	    channel.send("> Démarrage de la machine !");
+	})
 	try {
               const { stdout, stderr } = await exec('wakeonlan -i '+this.config.server.host+' '+this.config.server.mac);
               console.log('stdout:', stdout);
@@ -28,10 +35,6 @@ class Start {
         }catch (err){
               console.error(err);
         };
-
-        this.clients.discord.getClient().channels.fetch(this.config.discord.channel.general).then(channel => {
-            channel.send("> Démarrage de la machine !");
-        })
     }
 }
 
