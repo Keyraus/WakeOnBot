@@ -27,8 +27,13 @@ class Manager {
     registerEvent() {
 
         this.clients.discord.getClient().on("message", message => {
+	    // Vérifie que c'est bien dans le bon channel + bon préfix
+	    if(message.channel.id !== this.config.discord.channel.general || message.content.charAt(0) !== this.config.discord.prefix)
+               return;    
+
             let args = message.content.split(" ");
             args[0] = args[0].replace(this.config.discord.prefix, "");
+console.log(this.commands[args[0]])
 
             if(this.commands[args[0]]) {
                 let command = this.commands[args[0]];
