@@ -1,4 +1,4 @@
-class OmedanRp {
+class WakeOnBot {
 
     constructor() {
         // Déclaration de la configuration
@@ -28,7 +28,8 @@ class OmedanRp {
         };
 
         this.discord = {
-            embed: new (require("./discord/Embed.js"))
+            embed: new (require("./discord/Embed.js")),
+	    members: new (require("./discord/Members.js"))
         }
 
         // Instanciation et initialisation des Managers
@@ -65,4 +66,4 @@ class OmedanRp {
 
 }
 
-let Index = new OmedanRp();
+let Index = new WakeOnBot();
