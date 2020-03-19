@@ -1,5 +1,5 @@
 const util = require("util");
-const exec = util.promisify(require('child_process').exec);
+const wol = require('node-wol');
 
 class Start {
 
@@ -20,18 +20,26 @@ class Start {
         }
     }
 
-    async exec() {
-	try {
-              const { stdout, stderr } = await exec('wakeonlan -i '+this.config.server.host+' '+this.config.server.mac);
-              console.log('stdout:', stdout);
-              console.log('stderr:', stderr);
-        }catch (err){
-              console.error(err);
-        };
+    async exec(args, message) {
+	this.clients.discord.getClient().channels.fetch(this.config.discord.channel.general).then(channel => {
+	    if(!this.discord.members.checkPerm(message,["ADMIN", "BOSS", "Admin", "Start", "Reboot", "Stop"])) {
+                channel.send("> **Vous n'avez pas les permissions !**");
+                return;
+            }
 
-        this.clients.discord.getClient().channels.fetch(this.config.discord.channel.general).then(channel => {
-            channel.send("> Démarrage de la machine !");
-        })
+	    wol.wake(this.config.server.mac, {
+		address: this.config.server.host,
+		port: 7
+	    }, function (error) {
+		if(error) {
+		   console.log("Erreur lors du démarrage de la machine")
+		   return;
+		}
+		console.log("start")
+	    });
+
+	    channel.send("> Démarrage de la machine !");
+	})
     }
 }
 
