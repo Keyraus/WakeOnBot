@@ -47,11 +47,12 @@ class OmedanRp {
     }
 
     async init() {
+	let prefix = this.config.discord.prefix
         this.clients.discord.loginClient();
         this.clients.discord.getClient().on("ready", async () => {
             // this.utils.Logger.log("Discord: Ready.");
-            await this.clients.discord.getClient().user.setActivity('Omedan RP Bot - By Krixs & Keyraus', {
-                type: "LISTENING"
+            await this.clients.discord.getClient().user.setActivity(prefix + 'start ' + prefix + 'reboot ' + prefix +'stop', {
+                type: "WATCHING"
             });
             this.managers.commands.init();
             // this.utils.Logger.log("CronJob: Ready.");
