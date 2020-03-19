@@ -20,16 +20,22 @@ class Stop {
         }
     }
 
-    async exec() {
-        try {
-            this.global.ssh.exec('shutdown now').start();
-        } catch (error) {
-            console.log(error)
-            return;
-        }
+    async exec(args, message) {
+	this.clients.discord.getClient().channels.fetch(this.config.discord.channel.general).then(channel => {
+            if(!this.discord.members.checkPerm(message,["ADMIN", "BOSS", "Stop"])) {
+                channel.send("> **Vous n'avez pas les permissions !**");
+                return;
+            }
 
-        this.clients.discord.getClient().channels.fetch(this.config.discord.channel.general).then(channel => {
-            channel.send("> Arrêt de la machine !");
+	    try {
+                this.global.ssh.exec('shutdown now').start();
+                console.log("shutdown")
+            }
+            catch (error) {
+                console.log(error)
+                return;
+            }
+	    channel.send("> Arrêt de la machine !");
         })
     }
 }
